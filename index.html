@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>任务奖励 App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>今日行动面板</h1>
+        <p>完成小任务，拿到真实奖励，慢慢找回状态。</p>
+      </header>
+
+      <section class="card stats">
+        <h2>我的积分</h2>
+        <div class="points"><span id="points">0</span> 分</div>
+      </section>
+
+      <section class="card">
+        <h2>数据备份</h2>
+        <p class="meta">默认自动保存在浏览器。你也可以导出成电脑文件，之后再导入恢复。</p>
+        <div class="actions">
+          <button id="export-data" type="button">导出到文件</button>
+          <button id="import-data" class="secondary" type="button">从文件导入</button>
+          <input id="import-file" type="file" accept="application/json" hidden />
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>新增任务</h2>
+        <form id="task-form" class="grid-2">
+          <input id="task-title" type="text" placeholder="任务名称（例如：散步 10 分钟）" required />
+          <input id="task-points" type="number" min="1" placeholder="奖励积分" required />
+          <button type="submit">添加任务</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>任务清单</h2>
+        <ul id="task-list" class="list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>奖励兑换</h2>
+        <form id="reward-form" class="grid-2">
+          <input id="reward-title" type="text" placeholder="奖励名称（例如：看一集剧）" required />
+          <input id="reward-cost" type="number" min="1" placeholder="消耗积分" required />
+          <button type="submit">添加奖励</button>
+        </form>
+        <ul id="reward-list" class="list"></ul>
+      </section>
+    </main>
+
+    <template id="task-item-template">
+      <li>
+        <div>
+          <strong class="title"></strong>
+          <p class="meta"></p>
+        </div>
+        <div class="actions">
+          <button class="done">完成</button>
+          <button class="delete secondary">删除</button>
+        </div>
+      </li>
+    </template>
+
+    <template id="reward-item-template">
+      <li>
+        <div>
+          <strong class="title"></strong>
+          <p class="meta"></p>
+        </div>
+        <div class="actions">
+          <button class="redeem">兑换</button>
+          <button class="delete secondary">删除</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
